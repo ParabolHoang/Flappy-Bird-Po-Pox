@@ -1,14 +1,13 @@
 package com.popox.flappybird.component;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-
 import com.popox.flappybird.app.Game;
 import com.popox.flappybird.util.Constant;
 import com.popox.flappybird.util.GameUtil;
 import com.popox.flappybird.util.MusicUtil;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 /**
  * Bird, draw and move the bird
@@ -211,7 +210,6 @@ public class Bird {
         return x;
     }
 
-    // 获取小鸟的碰撞矩形
     public Rectangle getBirdCollisionRect() {
         return birdCollisionRect;
     }
