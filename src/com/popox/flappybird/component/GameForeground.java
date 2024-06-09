@@ -1,12 +1,11 @@
 package com.popox.flappybird.component;
 
+import com.popox.flappybird.util.Constant;
+import com.popox.flappybird.util.GameUtil;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.popox.flappybird.util.Constant;
-import com.popox.flappybird.util.GameUtil;
 
 /**
  * a class to control the foreground of the game

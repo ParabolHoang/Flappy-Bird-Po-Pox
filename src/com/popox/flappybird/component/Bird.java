@@ -71,11 +71,27 @@ public class Bird {
                 BIRD_WIDTH - RECT_DESCALE * 4); // Initialize the bird collision rectangle
     }
 
+    // login to move the bird
+    private void movement() {
+        // Wind state, action of the bird
+        wingState++;
+        image = birdImages[Math.min(state, BIRD_DEAD_FALL)][wingState / 10 % IMG_COUNT];
+        if (state == BIRD_FALL || state == BIRD_DEAD_FALL) {
+            freeFall();
+            if (birdCollisionRect.y > BOTTOM_BOUNDARY) {
+                if (state == BIRD_FALL) {
+                    MusicUtil.playCrash();
+                }
+                die();
+            }
+        }
+    }
+
     // Draw the bird
     public void draw(Graphics g) {
         movement();
         int state_index = Math.min(state, BIRD_DEAD_FALL); // Get the bird state
-        // 小鸟中心点计算
+        // Calculate the bird 
         int halfImgWidth = birdImages[state_index][0].getWidth() >> 1;
         int halfImgHeight = birdImages[state_index][0].getHeight() >> 1;
         if (velocity > 0) {
@@ -97,22 +113,6 @@ public class Bird {
     private int velocity = 0; // bird's velocity along Y, default same as playerFlapped
     private final int BOTTOM_BOUNDARY = Constant.FRAME_HEIGHT - GameBackground.GROUND_HEIGHT - (BIRD_HEIGHT / 2);
 
-    // login to move the bird
-    private void movement() {
-        // Wind state, action of the bird
-        wingState++;
-        image = birdImages[Math.min(state, BIRD_DEAD_FALL)][wingState / 10 % IMG_COUNT];
-        if (state == BIRD_FALL || state == BIRD_DEAD_FALL) {
-            freeFall();
-            if (birdCollisionRect.y > BOTTOM_BOUNDARY) {
-                if (state == BIRD_FALL) {
-                    MusicUtil.playCrash();
-                }
-                die();
-            }
-        }
-    }
-
     private void freeFall() {
         if (velocity < MAX_VEL_Y) {
             velocity -= ACC_Y;
@@ -127,7 +127,12 @@ public class Bird {
         Game.setGameState(Game.STATE_OVER);
     }
 
+    // Check if the bird is dead
+    public boolean isDead() {
+        return state == BIRD_DEAD_FALL || state == BIRD_DEAD;
+    }
     // Bird flap
+
     public void birdFlap() {
         if (keyIsReleased()) {
             if (isDead()) {
@@ -156,11 +161,6 @@ public class Bird {
         state = BIRD_DEAD_FALL;
         MusicUtil.playCrash(); // Play the sound effect 
         velocity = 0;  // Reset the velocity
-    }
-
-    // Check if the bird is dead
-    public boolean isDead() {
-        return state == BIRD_DEAD_FALL || state == BIRD_DEAD;
     }
 
     //  Draw the score

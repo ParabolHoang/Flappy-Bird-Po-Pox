@@ -1,13 +1,12 @@
 package com.popox.flappybird.component;
 
+import com.popox.flappybird.util.Constant;
+import com.popox.flappybird.util.MusicUtil;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
-import com.popox.flappybird.util.Constant;
-import com.popox.flappybird.util.MusicUtil;
 
 /**
  * ScoreCounter, count the score

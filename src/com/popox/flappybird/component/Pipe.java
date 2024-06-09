@@ -1,11 +1,10 @@
 package com.popox.flappybird.component;
 
+import com.popox.flappybird.util.Constant;
+import com.popox.flappybird.util.GameUtil;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-
-import com.popox.flappybird.util.Constant;
-import com.popox.flappybird.util.GameUtil;
 
 /**
  * Pipe, draw and move the pipe
@@ -30,12 +29,12 @@ public class Pipe {
     public static final int PIPE_HEAD_WIDTH = imgs[1].getWidth();
     public static final int PIPE_HEAD_HEIGHT = imgs[1].getHeight();
 
-    int x, y; // Pipe coordinate
-    int width, height; // Pipe width and height
+    public int x, y; // Pipe coordinate
+    public int width, height; // Pipe width and height
 
-    boolean visible; // Pipe visibility
+    public boolean visible; // Pipe visibility
     // Pipe type
-    int type;
+    public int type;
     public static final int TYPE_TOP_NORMAL = 0;
     public static final int TYPE_TOP_HARD = 1;
     public static final int TYPE_BOTTOM_NORMAL = 2;
@@ -44,7 +43,7 @@ public class Pipe {
     public static final int TYPE_HOVER_HARD = 5;
 
     // Pipe speed
-    int speed;
+    public int speed;
 
     Rectangle pipeRect; // Pipe collision rectangle
 
@@ -111,7 +110,7 @@ public class Pipe {
     }
 
     // Draw the pipe from top to bottom
-    private void drawTopNormal(Graphics g) {
+    public void drawTopNormal(Graphics g) {
         // Number of splices
         int count = (height - PIPE_HEAD_HEIGHT) / PIPE_HEIGHT + 1; // Number of splices
         // Draw the body of the pipe
@@ -120,11 +119,11 @@ public class Pipe {
         }
         // Draw the top of the pipe
         g.drawImage(imgs[1], x - ((PIPE_HEAD_WIDTH - width) >> 1),
-                height - Constant.TOP_PIPE_LENGTHENING - PIPE_HEAD_HEIGHT, null); // 水管头部与水管主体的宽度不同，x坐标需要处理
+                height - Constant.TOP_PIPE_LENGTHENING - PIPE_HEAD_HEIGHT, null); // 
     }
 
     // Draw the pipe from bottom to top
-    private void drawBottomNormal(Graphics g) {
+    public void drawBottomNormal(Graphics g) {
         // Number of splices
         int count = (height - PIPE_HEAD_HEIGHT - Constant.GROUND_HEIGHT) / PIPE_HEIGHT + 1;
         // Draw the body of the pipe
@@ -137,7 +136,7 @@ public class Pipe {
     }
 
     // Draw the hover pipe
-    private void drawHoverNormal(Graphics g) {
+    public void drawHoverNormal(Graphics g) {
         // Number of splices
         int count = (height - 2 * PIPE_HEAD_HEIGHT) / PIPE_HEIGHT + 1;
         // Draw the top of the pipe
@@ -154,7 +153,7 @@ public class Pipe {
     /**
      * Pipe movement
      */
-    private void movement() {
+    public void movement() {
         x -= speed;
         pipeRect.x -= speed;
         if (x < -1 * PIPE_HEAD_WIDTH) {// If the pipe is completely out of the window, set the pipe to invisible

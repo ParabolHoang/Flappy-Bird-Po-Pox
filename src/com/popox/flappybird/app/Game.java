@@ -1,24 +1,11 @@
 package com.popox.flappybird.app;
 
+import com.popox.flappybird.component.*;
+import static com.popox.flappybird.util.Constant.*;
 import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
-
-import com.popox.flappybird.component.Bird;
-import com.popox.flappybird.component.GameBackground;
-import com.popox.flappybird.component.GameElementLayer;
-import com.popox.flappybird.component.GameForeground;
-import com.popox.flappybird.component.WelcomeAnimation;
-import static com.popox.flappybird.util.Constant.FPS;
-import static com.popox.flappybird.util.Constant.FRAME_HEIGHT;
-import static com.popox.flappybird.util.Constant.FRAME_WIDTH;
-import static com.popox.flappybird.util.Constant.FRAME_X;
-import static com.popox.flappybird.util.Constant.FRAME_Y;
-import static com.popox.flappybird.util.Constant.GAME_TITLE;
 
 /**
  * Main class of the game
@@ -48,7 +35,7 @@ public class Game extends Frame {
     }
 
     // Initialize the game window
-    private void initFrame() {
+    public void initFrame() {
         setSize(FRAME_WIDTH, FRAME_HEIGHT); // Set the window size
         setTitle(GAME_TITLE); // Set the window title
         setLocation(FRAME_X, FRAME_Y); // Set the window location
@@ -96,7 +83,7 @@ public class Game extends Frame {
         }
 
         // Reset the game
-        private void resetGame() {
+        public void resetGame() {
             setGameState(GAME_READY);
             gameElement.reset();
             bird.reset();
@@ -115,7 +102,7 @@ public class Game extends Frame {
     }
 
     // Initialize the game elements
-    private void initGame() {
+    public void initGame() {
         background = new GameBackground();
         gameElement = new GameElementLayer();
         foreground = new GameForeground();

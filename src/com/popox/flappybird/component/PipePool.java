@@ -1,9 +1,8 @@
 package com.popox.flappybird.component;
 
+import com.popox.flappybird.util.Constant;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.popox.flappybird.util.Constant;
 
 /**
  * Pipe pool For creating and recycling pipes, use the object pool pattern to

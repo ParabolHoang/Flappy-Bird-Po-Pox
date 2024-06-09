@@ -1,11 +1,10 @@
 package com.popox.flappybird.component;
 
+import com.popox.flappybird.util.Constant;
+import com.popox.flappybird.util.GameUtil;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.popox.flappybird.util.Constant;
-import com.popox.flappybird.util.GameUtil;
 
 /**
  * Game element layer, control the game elements
@@ -52,7 +51,7 @@ public class GameElementLayer {
     public static final int MIN_HEIGHT = Constant.FRAME_HEIGHT >> 3;
     public static final int MAX_HEIGHT = ((Constant.FRAME_HEIGHT) >> 3) * 5;
 
-    private void pipeBornLogic(Bird bird) {
+    public void pipeBornLogic(Bird bird) {
         if (bird.isDead()) {
             // No longer add pipes after the bird dies
             return;
@@ -72,6 +71,7 @@ public class GameElementLayer {
             pipes.add(top);
             pipes.add(bottom);
         } else {
+
             // Add a pair of pipes if the last pair of pipes is completely in the game window
             Pipe lastPipe = pipes.get(pipes.size() - 1); // Get the last pair of pipes
             int currentDistance = lastPipe.getX() - bird.getBirdX() + Bird.BIRD_WIDTH / 2; // Distance between the last pair of pipes and the bird
@@ -87,15 +87,15 @@ public class GameElementLayer {
                     if (GameUtil.isInProbability(currentScore, 20)) {
                         if (GameUtil.isInProbability(1, 4)) // Generate moving normal pipes and moving hover pipes
                         {
-                            addMovingHoverPipe(lastPipe); 
-                        }else {
+                            addMovingHoverPipe(lastPipe);
+                        } else {
                             addMovingNormalPipe(lastPipe);
                         }
                     } else {
                         if (GameUtil.isInProbability(1, 2)) // Generate normal pipes and hover pipes
                         {
-                            addNormalPipe(lastPipe); 
-                        }else {
+                            addNormalPipe(lastPipe);
+                        } else {
                             addHoverPipe(lastPipe);
                         }
                     }
@@ -112,7 +112,7 @@ public class GameElementLayer {
      *
      * @param lastPipe for getting the x coordinate of the last pair of pipes
      */
-    private void addNormalPipe(Pipe lastPipe) {
+    public void addNormalPipe(Pipe lastPipe) {
         int topHeight = GameUtil.getRandomNumber(MIN_HEIGHT, MAX_HEIGHT + 1); // Randomly generate pipe height
         int x = lastPipe.getX() + HORIZONTAL_INTERVAL; // The x coordinate of the new pipe = the x coordinate of the last pair of pipes + the pipe interval
 
@@ -135,7 +135,7 @@ public class GameElementLayer {
      *
      * @param lastPipe for getting the x coordinate of the last pair of pipes
      */
-    private void addHoverPipe(Pipe lastPipe) {
+    public void addHoverPipe(Pipe lastPipe) {
 
         // Randomly generate pipe height, [1/4,1/6] of the screen height
         int topHoverHeight = GameUtil.getRandomNumber(Constant.FRAME_HEIGHT / 6, Constant.FRAME_HEIGHT / 4);
@@ -163,7 +163,7 @@ public class GameElementLayer {
      *
      * @param lastPipe for getting the x coordinate of the last pair of pipes
      */
-    private void addMovingHoverPipe(Pipe lastPipe) {
+    public void addMovingHoverPipe(Pipe lastPipe) {
 
         // Randomly generate pipe height, [1/4,1/6] of the screen height
         int topHoverHeight = GameUtil.getRandomNumber(Constant.FRAME_HEIGHT / 6, Constant.FRAME_HEIGHT / 4);
@@ -191,7 +191,7 @@ public class GameElementLayer {
      *
      * @param lastPipe for getting the x coordinate of the last pair of pipes
      */
-    private void addMovingNormalPipe(Pipe lastPipe) {
+    public void addMovingNormalPipe(Pipe lastPipe) {
         int topHeight = GameUtil.getRandomNumber(MIN_HEIGHT, MAX_HEIGHT + 1); // Randomly generate pipe height
         int x = lastPipe.getX() + HORIZONTAL_INTERVAL; // The x coordinate of the new pipe = the x coordinate of the last pair of pipes + the pipe interval
 
@@ -210,7 +210,7 @@ public class GameElementLayer {
     /**
      * Determine whether the bird collides with the pipe
      *
-     * @param bird 传入小鸟对象
+     * @param bird
      */
     public void isCollideBird(Bird bird) {
         // Determine whether the bird is dead

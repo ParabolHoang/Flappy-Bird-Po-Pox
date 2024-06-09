@@ -44,7 +44,7 @@ public class GameUtil {
     public static boolean isInProbability(int numerator, int denominator) throws Exception {
         // Illegal parameter
         if (numerator <= 0 || denominator <= 0) {
-            throw new Exception("传入了非法的参数");
+            throw new Exception("An ivalid parameter was passed");
         }
         // The probability is 100%
         if (numerator >= denominator) {

@@ -19,7 +19,7 @@ public class MusicUtil {
     private static AudioStream crash;
     private static AudioStream score;
 
-    // wav播放
+    // wav
     public static void playFly() {
         try {
             // create an AudioStream from the InputStream

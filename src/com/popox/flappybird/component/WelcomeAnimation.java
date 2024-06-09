@@ -2,7 +2,6 @@ package com.popox.flappybird.component;
 
 import com.popox.flappybird.util.Constant;
 import com.popox.flappybird.util.GameUtil;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

@@ -1,8 +1,7 @@
 package com.popox.flappybird.component;
 
-import java.awt.Graphics;
-
 import com.popox.flappybird.util.Constant;
+import java.awt.Graphics;
 
 /**
  * Moving pipe extends Pipe
@@ -62,7 +61,7 @@ public class MovingPipe extends Pipe {
     }
 
     // Draw the hover pipe
-    private void drawHoverHard(Graphics g) {
+    public void drawHoverHard(Graphics g) {
         // Number of splices
         int count = (height - 2 * PIPE_HEAD_HEIGHT) / PIPE_HEIGHT + 1;
         // Draw the top of the pipe
@@ -77,9 +76,9 @@ public class MovingPipe extends Pipe {
     }
 
     // Draw the pipe from top to bottom
-    private void drawTopHard(Graphics g) {
+    public void drawTopHard(Graphics g) {
         // Number of splices
-        int count = (height - PIPE_HEAD_HEIGHT) / PIPE_HEIGHT + 1; // 取整+1
+        int count = (height - PIPE_HEAD_HEIGHT) / PIPE_HEIGHT + 1; // Number of splices
         // Draw the body of the pipe
         for (int i = 0; i < count; i++) {
             g.drawImage(imgs[0], x, y + dealtY + i * PIPE_HEIGHT, null);
@@ -104,7 +103,7 @@ public class MovingPipe extends Pipe {
     /**
      * Pipe movement
      */
-    private void movement() {
+    public void movement() {
         // Pipe movement
         x -= speed;
         pipeRect.x -= speed;
