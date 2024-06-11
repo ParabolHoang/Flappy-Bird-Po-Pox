@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 /**
  * Bird, draw and move the bird
  *
- * @author Kingyu
+ * @author Po Pox
  */
 public class Bird {
 
